@@ -75,7 +75,7 @@ def setup_rserver():
 
         # use mkdtemp() so the directory and its contents don't vanish when
         # we're out of scope
-        server_data_dir = tempfile.mkdtemp()
+        server_data_dir = os.environ.get('TMPDIR', tempfile.mkdtemp())
         database_config_file = db_config(server_data_dir)
 
         cmd = [
